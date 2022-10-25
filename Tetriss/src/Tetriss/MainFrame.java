@@ -5,11 +5,11 @@ import java.awt.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class mainFrame extends JFrame {
+public class MainFrame extends JFrame {
 	Container con = getContentPane();
-	MyPanel panel = new MyPanel();
+	GamePanel panel = new GamePanel();
 	
-	public mainFrame() {
+	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("메인 프레임");
 		setSize(528, 650);
@@ -18,8 +18,6 @@ public class mainFrame extends JFrame {
 	}
 
 	private void setFrame() {
-//		JPanel pnlFrame = new JPanel();
-//		con.add(pnlFrame);
 		con.add(panel);
 		panel.setFocusable(true);
 		panel.requestFocus();
@@ -28,7 +26,7 @@ public class mainFrame extends JFrame {
 
 
 	public static void main(String[] args) {
-		new mainFrame();
+		new MainFrame();
 	}
 
 }
