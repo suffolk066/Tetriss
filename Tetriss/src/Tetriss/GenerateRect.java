@@ -28,4 +28,8 @@ public class GenerateRect {
 	public void setColor(Color c) {
 		this.c = c;
 	}
+	
+	public Color getColor() {
+		return c;
+	}
 }
