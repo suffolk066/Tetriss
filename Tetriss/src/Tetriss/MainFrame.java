@@ -8,12 +8,14 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
 	Container con = getContentPane();
 	GamePanel panel = new GamePanel();
+	JLabel statusBar = new JLabel("0");
 	
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("메인 프레임");
-		setSize(528, 650);
+		setTitle("테트리스 게임");
+		setSize(330, 520);
 		setFrame();
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 
@@ -21,6 +23,7 @@ public class MainFrame extends JFrame {
 		con.add(panel);
 		panel.setFocusable(true);
 		panel.requestFocus();
+		con.add(statusBar, BorderLayout.SOUTH);
 		
 	}
 
