@@ -31,10 +31,18 @@ public class GamePanel extends JPanel {
 				g.drawRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
 			}
 		}
-		cell = new int[][]{{1, 0}, {1, 0}, {1, 0}, {1, 1}};
+		
 		g.setColor(Color.red);
-		for (int i = 0; i < 4; i++) {
-			g.fillRect(0, i * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+		cell = new int[][]{{1, 0}, {1, 0}, {1, 0}, {1, 1}};
+		for (int i = 0; i < cell.length; i++) {
+			if (cell[i][0] == 1) {
+				g.fillRect(0, i * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+			}
+			for (int j = 0; j < cell.length; j++) {
+				if (cell[j][1] == 1) {
+					g.fillRect(1 * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+				}
+			}
 		}
 	}
 }
