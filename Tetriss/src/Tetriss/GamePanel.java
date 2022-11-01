@@ -7,42 +7,46 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel {
+
+	private int gridRows;
+	private int gridColumn;
+	private int gridCellSize;
 	
-	private final int BOARD_ROWS = 15;
-	private final int BOARD_COLS = 10;
-	private final int CELL_SIZE = 30;
-	int[][] cell;
-	
-	public GamePanel() {
+	private int[][] block = {
+			{1, 0}, 
+			{1, 0}, 
+			{1, 0}, 
+			{1, 1}
+			}; 
+
+	public GamePanel(int column) {
 		setBounds(100, 100, 301, 451);
-		setBackground(Color.white);
-	}
-	
-	public void block() {
+		setBorder(getBorder());
+		gridColumn = column;
+		gridCellSize = getBounds().width / gridColumn;
+		gridRows = getBounds().height / gridCellSize;
 		
+	}
+
+	private void drawBlock(Graphics g) {
+		for (int row = 0; row < block.length; row++) {
+			for (int col = 0; col < block[0].length; col++) {
+				if (block[row][col] == 1)
+					g.fillRect(col * gridCellSize, row * gridCellSize, gridCellSize, gridCellSize);
+			}
+		}
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		for (int i = 0; i < BOARD_COLS; i++ ) {
-			g.drawRect(i * CELL_SIZE, 0, CELL_SIZE, CELL_SIZE);
-			for (int j = 0; j < BOARD_ROWS; j++) {
-				g.drawRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+		for (int y = 0; y < gridRows; y++) {
+			for (int x = 0; x < gridColumn; x++) {
+				g.drawRect(x * gridCellSize, y * gridCellSize, gridCellSize, gridCellSize);
 			}
 		}
 		
-		g.setColor(Color.red);
-		cell = new int[][]{{1, 0}, {1, 0}, {1, 0}, {1, 1}};
-		for (int i = 0; i < cell.length; i++) {
-			if (cell[i][0] == 1) {
-				g.fillRect(0, i * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-			}
-			for (int j = 0; j < cell.length; j++) {
-				if (cell[j][1] == 1) {
-					g.fillRect(1 * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-				}
-			}
-		}
+		g.setColor(Color.RED);
+		drawBlock(g);
 	}
 }

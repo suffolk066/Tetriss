@@ -7,7 +7,7 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
 	Container con = getContentPane();
-	GamePanel panel = new GamePanel();
+	GamePanel panel = new GamePanel(10);
 	
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
