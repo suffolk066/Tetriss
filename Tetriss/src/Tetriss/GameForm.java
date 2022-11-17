@@ -1,7 +1,6 @@
 package Tetriss;
 
 import java.awt.*;
-
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -31,5 +30,4 @@ public class GameForm extends JFrame {
 	public static void main(String[] args) {
 		new GameForm();
 	}
-
 }

@@ -10,11 +10,13 @@ public class GameThread extends Thread {
 	@Override
 	public void run() {
 		while (true) {
-			try {
-				Thread.sleep(1000);
-				area.moewBlockDown();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			area.spawnBlock();
+			while (area.moveBlockDown()) {
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
