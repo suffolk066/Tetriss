@@ -5,26 +5,31 @@ import java.awt.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class MainFrame extends JFrame {
+public class GameForm extends JFrame {
 	Container con = getContentPane();
-	GamePanel panel = new GamePanel(10);
+	GameArea panel = new GameArea(10);
 	
-	public MainFrame() {
+	public GameForm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("테트리스 게임");
 		setSize(800, 800);
 		setFrame();
 		setLocationRelativeTo(null);
 		setVisible(true);
+		startGame();
 	}
 
 	private void setFrame() {
 		con.setLayout(null);
 		con.add(panel);
 	}
-
+	
+	public void startGame() {
+		new GameThread(panel).start();
+	}
+	
 	public static void main(String[] args) {
-		new MainFrame();
+		new GameForm();
 	}
 
 }
